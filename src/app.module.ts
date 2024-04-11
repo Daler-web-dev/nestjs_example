@@ -6,6 +6,7 @@ import { User } from './users/users.model';
 import { RolesModule } from './roles/roles.module';
 import { Role } from './roles/roles.model';
 import { UserRoles } from './roles/user-roles.model';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   controllers: [],
@@ -17,7 +18,7 @@ import { UserRoles } from './roles/user-roles.model';
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: process.env.POSTGRES_HOST,
-      port: Number(process.env.POSTGRES_PORT),
+      port: +process.env.POSTGRES_PORT,
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASWORD, 
       database: process.env.POSTGRES_DB,
@@ -26,6 +27,7 @@ import { UserRoles } from './roles/user-roles.model';
     }),
     UsersModule,
     RolesModule,
+    AuthModule,
   ],
 })
 export class AppModule {}
